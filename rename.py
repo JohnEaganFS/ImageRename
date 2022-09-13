@@ -62,29 +62,11 @@ def main():
         shutil.rmtree(newFolder)
     os.mkdir(newFolder)
 
-    # Loop through the images in the folder in alphabetical order
-    for i, filename in enumerate(sorted(os.listdir(folder))):
-        print("PDF: " + filename)
-
     # Loop through the names
     for i, name in enumerate(names):
         # Look for a file with the name (case insensitive) without an extension and make sure it's an image file
         for filename in os.listdir(folder):
-            # Remove numbers in the name
-            filename = filename.replace('1', '')
-            filename = filename.replace('2', '')
-            filename = filename.replace('3', '')
-            filename = filename.replace('4', '')
-            filename = filename.replace('5', '')
-            filename = filename.replace('6', '')
-            filename = filename.replace('7', '')
-            filename = filename.replace('8', '')
-            filename = filename.replace('9', '')
-            filename = filename.replace('0', '')
-            # Remove space at front of name
-            filename = filename.lstrip()
-            
-            # Check if filename without extension is in name
+            # Check if filename without extension is similar to name
             if filename.split('.')[0].lower() in name.lower():
                 #print('{:03d} {}'.format(i+1, name))
                 # Copy the file to the new folder with the new name (with the same extension), keeping original file intact
@@ -92,7 +74,8 @@ def main():
                 shutil.copy(os.path.join(folder, filename), os.path.join(newFolder, '{:03d} {}.{}'.format(i+1, name.upper(), filename.split('.')[-1])))
                 break
         # If no file was found, print a message with the number and name
-        print('No file found for {:03d} {}'.format(i+1, name))
+        else:
+            print('No file found for {:03d} {}'.format(i+1, name))
     
     # Don't close the window until the user presses a button
     messagebox.showinfo('Done', 'Done')
