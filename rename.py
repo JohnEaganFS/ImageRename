@@ -1,6 +1,7 @@
 import os
 import tkinter
 from tkinter import filedialog as fd
+from tkinter import messagebox
 import openpyxl
 import sys
 import shutil
@@ -45,13 +46,13 @@ def main():
     root = tkinter.Tk()
     root.withdraw()
     # Tell the user to select a spreadsheet with message
-    tkinter.messagebox.showinfo('Select a spreadsheet', 'Select a spreadsheet')
+    messagebox.showinfo('Select a spreadsheet', 'Select a spreadsheet')
     names = getNames()
     print(names)
 
     # Get the folder's name
     # Tell the user to select a folder with images
-    tkinter.messagebox.showinfo('Select a folder with images', 'Select a folder with images')
+    messagebox.showinfo('Select a folder with images', 'Select a folder with images')
     folder = getImageFolder()
     print(folder)
 
@@ -62,9 +63,9 @@ def main():
     os.mkdir(newFolder)
 
     # Loop through the names
-    for name in names:
+    for i, name in enumerate(names):
         # Look for a file with the name (case insensitive) without an extension and make sure it's an image file
-        for i, filename in enumerate(os.listdir(folder)):
+        for filename in os.listdir(folder):
             if filename.lower().startswith(name.lower()):
                 #print('{:03d} {}'.format(i+1, name))
                 # Copy the file to the new folder with the new name (with the same extension), keeping original file intact
