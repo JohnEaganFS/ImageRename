@@ -89,6 +89,9 @@ def main():
         # If no file was found, print a message with the number and name
         else:
             print('No file found for {:03d} {}'.format(i+1, name))
+    
+    # Don't close the window until the user presses a button
+    messagebox.showinfo('Done', 'Done')
 
 
 if __name__ == "__main__":
