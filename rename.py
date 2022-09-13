@@ -86,6 +86,10 @@ def main():
                 # Uppercase the name
                 shutil.copy(os.path.join(folder, filename), os.path.join(newFolder, '{:03d} {}.{}'.format(i+1, name.upper(), filename.split('.')[-1])))
                 break
+        # If no file was found, print a message with the number and name
+        else:
+            print('No file found for {:03d} {}'.format(i+1, name))
+
 
 if __name__ == "__main__":
     main()
