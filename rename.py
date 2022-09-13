@@ -66,10 +66,25 @@ def main():
     for i, name in enumerate(names):
         # Look for a file with the name (case insensitive) without an extension and make sure it's an image file
         for filename in os.listdir(folder):
+            # Remove numbers in the name
+            filename = filename.replace('1', '')
+            filename = filename.replace('2', '')
+            filename = filename.replace('3', '')
+            filename = filename.replace('4', '')
+            filename = filename.replace('5', '')
+            filename = filename.replace('6', '')
+            filename = filename.replace('7', '')
+            filename = filename.replace('8', '')
+            filename = filename.replace('9', '')
+            filename = filename.replace('0', '')
+            # Remove space at front of name
+            filename = filename.lstrip()
+                
             if filename.lower().startswith(name.lower()):
                 #print('{:03d} {}'.format(i+1, name))
                 # Copy the file to the new folder with the new name (with the same extension), keeping original file intact
-                shutil.copy(os.path.join(folder, filename), os.path.join(newFolder, '{:03d} {}.{}'.format(i+1, name, filename.split('.')[-1])))
+                # Uppercase the name
+                shutil.copy(os.path.join(folder, filename), os.path.join(newFolder, '{:03d} {}.{}'.format(i+1, name.upper(), filename.split('.')[-1])))
                 break
 
 if __name__ == "__main__":
